@@ -1,6 +1,7 @@
 //IMPORT FROM PACKAGES
 const express =require("express");
 const mongoose=require("mongoose");
+const cors = require("cors");
 
 //IMPORT FROM OTHER FILES
 const authRouter=require("./routes/auth");
@@ -15,6 +16,7 @@ const app=express();
 
 //middllewares
 app.use(express.json());
+app.use(cors());
 app.use(authRouter);
 
 

@@ -4,10 +4,11 @@ class Product {
   final String name;
   final String description;
   final double price;
-  final int quantity;
+  final double quantity;
   final String category;
   final List<String> images;
   final String? id;
+  final String? userId;
 
   Product({
     required this.name,
@@ -17,18 +18,20 @@ class Product {
     required this.category,
     required this.images,
     this.id,
+    this.userId,
   });
   //rating
 
-  factory Product.fromMap(Map<String, dynamic> json) {
+  factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
-      name: json['name'] as String,
-      description: json['description'] as String,
-      price: json['price'] as double,
-      quantity: json['quantity'] as int,
-      category: json['category'] as String,
-      images: json['images'] as List<String>,
-      id: json['_id'] as String?,
+      name: map['name'] ?? '',
+      description: map['description'] ?? '',
+      price: map['price']?.toDouble() ?? 0.0,
+      quantity: map['quantity']?.toDouble() ?? 0.0,
+      category: map['category'] ?? '',
+      images: List<String>.from(map['images']),
+      id: map['_id'],
+      userId: map['userId'],
     );
   }
   Map<String, dynamic> toMap() {
@@ -39,7 +42,8 @@ class Product {
       'quantity': quantity,
       'category': category,
       'images': images,
-      '_id': id,
+      'id': id,
+      'userId': userId,
     };
   }
 

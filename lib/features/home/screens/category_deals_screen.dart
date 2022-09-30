@@ -39,7 +39,7 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
             alignment: Alignment.topLeft,
             child: Text(
               'Keep shopping for ${widget.category}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           SizedBox(

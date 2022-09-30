@@ -28,6 +28,7 @@ class AdminServices {
       for (int i = 0; i < images.length; i++) {
         CloudinaryResponse res = await cloudinary
             .uploadFile(CloudinaryFile.fromFile(images[i].path, folder: name));
+
         imageUrls.add(res.secureUrl);
       }
       Product product = Product(

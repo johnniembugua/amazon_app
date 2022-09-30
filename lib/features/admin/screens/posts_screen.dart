@@ -43,37 +43,42 @@ class _PostScreenState extends State<PostScreen> {
     return Scaffold(
       body: products == null
           ? const Loader()
-          : GridView.builder(
-              itemCount: products!.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                final productData = products![index];
-                print(products!.length);
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 140,
-                      child: SingleProduct(img: productData.images[0]),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          : products!.isEmpty
+              ? const Center(
+                  child: Text("No Products"),
+                )
+              : GridView.builder(
+                  itemCount: products!.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemBuilder: (context, index) {
+                    final productData = products![index];
+                    print(products!.length);
+                    return Column(
                       children: [
-                        Expanded(
-                            child: Text(
-                          productData.name,
-                          style: const TextStyle(color: Colors.black),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                        )),
-                        IconButton(
-                            onPressed: () => deleteProduct(productData, index),
-                            icon: const Icon(Icons.delete_outline))
+                        SizedBox(
+                          height: 140,
+                          child: SingleProduct(img: productData.images[0]),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                                child: Text(
+                              productData.name,
+                              style: const TextStyle(color: Colors.black),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            )),
+                            IconButton(
+                                onPressed: () =>
+                                    deleteProduct(productData, index),
+                                icon: const Icon(Icons.delete_outline))
+                          ],
+                        )
                       ],
-                    )
-                  ],
-                );
-              }),
+                    );
+                  }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, AddProductScreen.routeName);

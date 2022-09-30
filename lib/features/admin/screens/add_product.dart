@@ -56,7 +56,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   }
 
   void sellProduct() {
-    if (_formKey.currentState!.validate() || images.isNotEmpty) {
+    if (_formKey.currentState!.validate() && images.isNotEmpty) {
       adminServices.sellProduct(
         context: context,
         name: productNameController.text,
@@ -115,7 +115,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                           height: 200,
                           viewportFraction: 1,
                           autoPlay: true,
-                          autoPlayInterval: Duration(seconds: 10),
+                          autoPlayInterval: const Duration(seconds: 10),
                           autoPlayAnimationDuration:
                               Duration(milliseconds: 800),
                           autoPlayCurve: Curves.fastOutSlowIn,

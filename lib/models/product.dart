@@ -31,7 +31,7 @@ class Product {
       'category': category,
       'price': price,
       'id': id,
-      'rating': rating,
+      'ratings': rating,
     };
   }
 

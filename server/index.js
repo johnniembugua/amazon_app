@@ -7,6 +7,7 @@ const cors = require("cors");
 const authRouter=require("./routes/auth");
 const adminRouter=require("./routes/admin");
 const productRouter = require("./routes/product");
+const userRouter = require("./routes/user");
 
 
 
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(authRouter);
 app.use(adminRouter);
 app.use(productRouter);
+app.use(userRouter);
 
 
 //Connections

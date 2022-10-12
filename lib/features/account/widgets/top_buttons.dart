@@ -1,3 +1,4 @@
+import 'package:amazon_clone/features/account/services/account_services.dart';
 import 'package:amazon_clone/features/account/widgets/account_button.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,8 @@ class _TopButtonsState extends State<TopButtons> {
         const SizedBox(height: 10),
         Row(
           children: [
-            AccountButton(text: 'Logout', onTap: () {}),
+            AccountButton(
+                text: 'Logout', onTap: () => AccountServices().logOut(context)),
             AccountButton(text: 'Your Wishlist', onTap: () {}),
           ],
         ),

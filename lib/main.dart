@@ -39,6 +39,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Amazon',
       theme: ThemeData(
+          useMaterial3: true,
           scaffoldBackgroundColor: GlobalVariables.backgroundColor,
           colorScheme: const ColorScheme.light(
             primary: GlobalVariables.secondaryColor,

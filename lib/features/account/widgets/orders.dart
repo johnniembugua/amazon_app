@@ -2,6 +2,7 @@ import 'package:amazon_clone/common/widgets/loader.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/account/services/account_services.dart';
 import 'package:amazon_clone/features/account/widgets/single_product.dart';
+import 'package:amazon_clone/features/order_details/screens/order_details.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/order.dart';
@@ -78,8 +79,16 @@ class _OrdersState extends State<Orders> {
                         scrollDirection: Axis.horizontal,
                         itemCount: orders!.length,
                         itemBuilder: ((context, index) {
-                          return SingleProduct(
-                              img: orders![index].products[0].images[0]);
+                          print(orders!.length.toString());
+                          return GestureDetector(
+                            onTap: () => Navigator.pushNamed(
+                              context,
+                              OrderDetailScreen.routename,
+                              arguments: orders![index],
+                            ),
+                            child: SingleProduct(
+                                img: orders![index].products[0].images[0]),
+                          );
                         })),
                   )
                 ],

@@ -4,7 +4,6 @@ const {Product}=require('../models/product');
 const Order=require('../models/order');
 const adminRouter=express.Router();
 
-
 //Add product
 
 adminRouter.post('/admin/add-product',admin,async(req,res)=>{
@@ -137,4 +136,6 @@ adminRouter.get("/admin/analytics", admin, async (req, res) => {
     }
     return earnings;
   }
+
+
 module.exports=adminRouter;

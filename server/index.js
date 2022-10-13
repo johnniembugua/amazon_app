@@ -8,6 +8,8 @@ const authRouter=require("./routes/auth");
 const adminRouter=require("./routes/admin");
 const productRouter = require("./routes/product");
 const userRouter = require("./routes/user");
+const notificationRouter = require("./routes/notification");
+
 
 
 
@@ -24,6 +26,7 @@ app.use(authRouter);
 app.use(adminRouter);
 app.use(productRouter);
 app.use(userRouter);
+app.use(notificationRouter);
 
 
 //Connections

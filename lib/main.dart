@@ -4,12 +4,19 @@ import 'package:amazon_clone/features/admin/screens/admin_screen.dart';
 import 'package:amazon_clone/features/auth/screens/auth_screen.dart';
 import 'package:amazon_clone/features/auth/services/auth_service.dart';
 import 'package:amazon_clone/router.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
 
+import 'firebase_options.dart';
 import 'providers/user_provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (context) => UserProvider(),
@@ -35,23 +42,25 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Amazon',
-      theme: ThemeData(
-          useMaterial3: true,
-          scaffoldBackgroundColor: GlobalVariables.backgroundColor,
-          colorScheme: const ColorScheme.light(
-            primary: GlobalVariables.secondaryColor,
-          ),
-          appBarTheme: const AppBarTheme(
-              elevation: 0, iconTheme: IconThemeData(color: Colors.black))),
-      onGenerateRoute: (settings) => generateRoute(settings),
-      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? Provider.of<UserProvider>(context).user.type == 'admin'
-              ? AdminScreen()
-              : const BottomBar()
-          : const AuthScreen(),
+    return OverlaySupport(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Amazon',
+        theme: ThemeData(
+            useMaterial3: true,
+            scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+            colorScheme: const ColorScheme.light(
+              primary: GlobalVariables.secondaryColor,
+            ),
+            appBarTheme: const AppBarTheme(
+                elevation: 0, iconTheme: IconThemeData(color: Colors.black))),
+        onGenerateRoute: (settings) => generateRoute(settings),
+        home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+            ? Provider.of<UserProvider>(context).user.type == 'admin'
+                ? AdminScreen()
+                : const BottomBar()
+            : const AuthScreen(),
+      ),
     );
   }
 }

@@ -32,6 +32,11 @@ const userSchema=mongoose.Schema({
             message:'Please enter a long password',
         },
     },
+    verified:{
+        type:Boolean,
+        required:false,
+        default:false,
+    },
     address:{
         type:String,
         default:'',

@@ -69,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
             leading: CircleAvatar(
               radius: 10,
               child: Text(_totalNotificationCounter.toString()),
+              
             ),
             subtitle: Text(_notificationInfo!.body!),
             background: Colors.cyan,
@@ -133,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-// Logger().e(_fcmToken);
+Logger().e(_fcmToken);
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(60),

@@ -10,7 +10,8 @@ notificationRouter.post("/api/notification/send", (req, res) => {
   var notification = {
     title: title,
     body: body,
-    image: "https://images.unsplash.com/photo-1548248823-ce16a73b6d49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
+    image:
+      "https://images.unsplash.com/photo-1548248823-ce16a73b6d49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
   };
 
   let fcm_tokens = [];
@@ -22,11 +23,16 @@ notificationRouter.post("/api/notification/send", (req, res) => {
   console.log(fcm_tokens);
 
   var notification_body = {
-    notification: notification,
+    notification: {
+      title: title,
+      body: body,
+      image:
+        "https://images.unsplash.com/photo-1548248823-ce16a73b6d49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
+    },
     registration_ids: fcm_tokens,
-    data:{
-      "route":"/notification"
-    }
+    data: {
+      route: "/notification",
+    },
   };
 
   fetch("https://fcm.googleapis.com/fcm/send", {
@@ -40,7 +46,6 @@ notificationRouter.post("/api/notification/send", (req, res) => {
     body: JSON.stringify(notification_body),
   })
     .then(() => {
-      
       res.status(200).json({ message: "Notification sent successfully" });
     })
     .catch((err) => {
@@ -48,7 +53,5 @@ notificationRouter.post("/api/notification/send", (req, res) => {
       res.status(400).json({ error: "Something went wrong" });
     });
 });
-
-
 
 module.exports = notificationRouter;

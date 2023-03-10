@@ -62,12 +62,15 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBJNd2UwgDnDSiaF4xR-dct5N1Ms9-2UPs',
-    appId: '1:159463910979:ios:5c61cbbaf16b611ab7eef6',
+    appId: '1:159463910979:ios:def0fe6a8317162eb7eef6',
     messagingSenderId: '159463910979',
     projectId: 'fir-a7b44',
     storageBucket: 'fir-a7b44.appspot.com',
-    iosClientId: '159463910979-mfgjcfgcem84ip7mcobdmqqgllp4leh4.apps.googleusercontent.com',
-    iosBundleId: 'com.example.amazonClone',
+    androidClientId:
+        '159463910979-dfjnagf7sdsq2u0q33f3ctq480gt5kp5.apps.googleusercontent.com',
+    iosClientId:
+        '159463910979-k27ag961d3um0bnmvic4mkaa9qk0mo74.apps.googleusercontent.com',
+    iosBundleId: 'com.example.amazonApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -76,7 +79,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '159463910979',
     projectId: 'fir-a7b44',
     storageBucket: 'fir-a7b44.appspot.com',
-    iosClientId: '159463910979-mfgjcfgcem84ip7mcobdmqqgllp4leh4.apps.googleusercontent.com',
+    androidClientId:
+        '159463910979-dfjnagf7sdsq2u0q33f3ctq480gt5kp5.apps.googleusercontent.com',
+    iosClientId:
+        '159463910979-mfgjcfgcem84ip7mcobdmqqgllp4leh4.apps.googleusercontent.com',
     iosBundleId: 'com.example.amazonClone',
   );
 }

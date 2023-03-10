@@ -1,6 +1,7 @@
 //IMPORT FROM PACKAGES
 const express = require("express");
 const mongoose = require("mongoose");
+require("dotenv").config();
 const cors = require("cors");
 
 //IMPORT FROM OTHER FILES
@@ -25,12 +26,12 @@ app.use(adminRouter);
 app.use(productRouter);
 app.use(userRouter);
 app.use(notificationRouter);
+app.use("/uploads", express.static("uploads"));
 
 //Connections
 mongoose
   .connect(DB)
   .then((client) => {
-    console.log(client.Collection.collectionName);
     console.log("Connection to database successful");
   })
   .catch((e) => {

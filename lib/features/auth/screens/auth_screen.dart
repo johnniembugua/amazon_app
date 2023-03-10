@@ -1,7 +1,9 @@
 import 'package:amazon_clone/common/widgets/custom_button.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/auth/services/auth_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 import '../../../common/widgets/custom_textfield.dart';
 
@@ -50,6 +52,14 @@ class _AuthScreenState extends State<AuthScreen> {
       email: _emailController.text,
       password: _passwordController.text,
     );
+  }
+
+  @override
+  void initState() {
+    FirebaseMessaging.instance.getToken().then((newToken) {
+      Logger().i("Firebase Token $newToken");
+    });
+    super.initState();
   }
 
   @override

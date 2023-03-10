@@ -53,6 +53,11 @@ const userSchema = mongoose.Schema(
         },
       },
     ],
+    favorite: [
+      {
+        product: productSchema,
+      },
+    ],
   },
 
   {
